@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+{%extends 'admins/baseadmin.html'%}
+
+{%load static%}
+
+
+{% block body_block %}
+<h1>welcome home</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <div>
+                <a href="{%url 'courses'%}">Add Course</a>
+                <a href="{%url 'listcourse'%}">List Course</a>
+            </div>
+            <div>
+                <a href="{%url 'batches'%}">Add Batch</a>
+                                <a href="{%url 'listbatch'%}">List Batch</a>
+
+            </div>
+        </div>
+        <div class="col-4">
+            <a href="{%url 'telecalleradd' %}">ADD Telecaller</a>
+                        <a href="{%url 'logout'%}">Logout</a>
+
+        </div>
+
+    </div>
+</div>
+{%endblock%}l>

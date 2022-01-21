@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+
+{%extends 'telecaller/basetelecaller.html'%}
+
+{%load static%}
+
+
+{% block body_block %}
+
+<h1>welcome telecaller</h1>
+<a href="{%url 'studentadd'%}">Add Enquires</a>
+
+<a href="{%url 'listenquires'%}">View Enquires</a>
+
+{%endblock%}

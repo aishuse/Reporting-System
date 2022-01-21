@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+{%extends 'admins/baseadmin.html'%}
+
+{%load static%}
+
+
+{% block body_block %}
+
+<table class="table">
+
+    <tr>
+        <th>Name</th>
+        <th>email</th>
+        <th>phone</th>
+        <th>is active</th>
+      <th></th>
+    </tr>
+      {%for telecaller in telecallers%}
+    <tr>
+        <td>{{telecaller.name}}</td>
+        <td>{{telecaller.email}}</td>
+        <td>{{telecaller.phone}}</td>
+        <td>{{telecaller.is_active}}</td>
+    </tr>
+    {%endfor%}
+</table>
+
+{%endblock%}

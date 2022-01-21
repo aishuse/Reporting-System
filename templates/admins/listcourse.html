@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+{%extends 'admins/baseadmin.html'%}
+
+{%load static%}
+
+
+{% block body_block %}
+
+<table class="table">
+
+    <tr>
+        <th>Course Name</th>
+    <th>Fees</th>
+    </tr>
+  {%for course in courses%}
+<tr>
+    <td>{{course.course_name}}</td>
+
+
+    <td>{{course.fees}}</td>
+</tr>
+{%endfor%}
+
+
+</table>
+
+
+{%endblock%}
