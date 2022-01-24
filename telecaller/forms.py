@@ -31,3 +31,20 @@ class StudentForm(forms.ModelForm):
                 pass  # invalid input from the client; ignore and fallback to empty City queryset
         elif self.instance.pk:
             self.fields['batch'].queryset = self.instance.course.batch_set.order_by('batch_name')
+
+
+class StudentUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Student
+        fields = ['student_name', 'phone', 'email', 'course', 'batch', 'status', 'followup_date', 'enquiry_date']
+
+        widgets = {
+            'student_name': forms.TextInput(attrs={'class':'form-control'}),
+            "email": forms.EmailInput(attrs={"class": "form-control"}),
+            'course' : forms.Select(attrs={'class':'form-control'}),
+            'batch': forms.Select(attrs={'class': 'form-control'}),
+            'status': forms.Select(attrs={'class': 'form-control'}),
+            "followup_date": forms.DateInput(attrs={"type": "date"}),
+            "enquiry_date": forms.DateInput(attrs={"type": "date"}),
+            'phone': forms.NumberInput(attrs={"class": "form-control"}),
+        }

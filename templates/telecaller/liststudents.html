@@ -17,6 +17,7 @@
         <th>followup date</th>
         <th>enquiry date</th>
         <th>telecaller</th>
+        <th>Actions</th>
     </tr>
     
     {%for student in students%}
@@ -31,6 +32,10 @@
         <td>{{student.followup_date}}</td>
         <td>{{student.enquiry_date}}</td>
         <td>{{student.telecaller.name}}</td>
+        <td> <a href="{%url 'studupdate' student.pk%}" class="btn btn-secondary">Update</a>
+                    <td> <a href="{%url 'studdelete' student.pk%}" class="btn btn-secondary">Delete</a>
+
+</td>
     </tr>
     {%endfor%}
 </table>

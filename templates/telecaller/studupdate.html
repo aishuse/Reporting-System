@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+{%extends 'telecaller/basetelecaller.html'%}
+
+{%load static%}
+
+
+{% block body_block %}
+<div class="container">
+    <div class="row">
+        <center>
+            {% if messages %}
+            <div class="alert alert-success" style="width:500px; height:100px;">
+                {% for message in messages %}
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                <div class="mesage-alert-success">{{ message }}<i class="fas fa-check-circle"></i></div>
+                {% endif %}
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                <div class="mesage-alert-danger">{{ message }}<i class="fas fa-times-circle"></i></div>
+                {% endif %}
+                {% endfor %}
+            </div>
+            {% endif %}
+        </center>
+    </div>
+
+    <form method="post" id="StudentForm" data-cities-url="{% url 'ajax_load_cities' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Submit">
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+    $("#id_course").change(function () {
+        const url = $("#StudentForm").attr("data-cities-url");  // get the url of the `load_cities` view
+        const courseId = $(this).val();  // get the selected country ID from the HTML input
+
+        $.ajax({                       // initialize an AJAX request
+            url: url,                    // set the url of the request (= /persons/ajax/load-cities/ )
+            data: {
+                'course_id': courseId       // add the country id to the GET parameters
+            },
+            success: function (data) {   // `data` is the return of the `load_cities` view function
+                $("#id_batch").html(data);  // replace the contents of the city input with the data that came from the server
+                /*
+                let html_data = '<option value="">---------</option>';
+                data.forEach(function (batch) {
+                    html_data += `<option value="${batch.id}">${batch.batch_name}</option>`
+                });
+                console.log(html_data);
+                $("#id_batch").html(html_data);
+                */
+            }
+        });
+
+    });
+
+
+</script>
+
+{%endblock%}

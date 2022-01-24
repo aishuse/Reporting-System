@@ -11,16 +11,18 @@
 
     <tr>
         <th>Course Name</th>
-    <th>Fees</th>
+        <th>Fees</th>
+        <th>Actions</th>
     </tr>
-  {%for course in courses%}
-<tr>
-    <td>{{course.course_name}}</td>
+    {%for course in courses%}
+    <tr>
+        <td>{{course.course_name}}</td>
+        <td>{{course.fees}}</td>
+        <td><a href="{%url 'courseupdate' course.pk%}" class="btn btn-secondary">Update</a>
+        <td><a href="{%url 'coursedelete' course.pk%}" class="btn btn-secondary">Delete</a>
 
-
-    <td>{{course.fees}}</td>
-</tr>
-{%endfor%}
+    </tr>
+    {%endfor%}
 
 
 </table>

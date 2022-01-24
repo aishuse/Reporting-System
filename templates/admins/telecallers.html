@@ -11,17 +11,20 @@
 
     <tr>
         <th>Name</th>
-        <th>email</th>
-        <th>phone</th>
+        <th>Email</th>
+        <th>Phone</th>
         <th>is active</th>
-      <th></th>
+        <th>Actions</th>
     </tr>
-      {%for telecaller in telecallers%}
+    {%for telecaller in telecallers%}
     <tr>
         <td>{{telecaller.name}}</td>
         <td>{{telecaller.email}}</td>
         <td>{{telecaller.phone}}</td>
         <td>{{telecaller.is_active}}</td>
+        <td><a href="{%url 'telecallerupdate' telecaller.pk%}" class="btn btn-secondary">Update</a>
+        <td><a href="{%url 'telecallerdelete' telecaller.pk%}" class="btn btn-secondary">Delete</a>
+
     </tr>
     {%endfor%}
 </table>
